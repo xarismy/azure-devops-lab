@@ -5,15 +5,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+
 - script: |
-    echo "Azure DevOps Lab"
-    echo "Running build..."
-    echo "Hostname:"
-    hostname
-
-    echo "Current directory:"
+    echo "Repository contents"
     pwd
-
-    echo "Files:"
     ls -la
-  displayName: 'Basic Build Test'
+  displayName: "Show Files"
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.SourcesDirectory)'
+    artifact: 'website'
+    publishLocation: 'pipeline'
