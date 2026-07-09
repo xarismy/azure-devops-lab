@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    echo "Azure DevOps Lab"
+    echo "Running build..."
+    echo "Hostname:"
+    hostname
+
+    echo "Current directory:"
+    pwd
+
+    echo "Files:"
+    ls -la
+  displayName: 'Basic Build Test'
