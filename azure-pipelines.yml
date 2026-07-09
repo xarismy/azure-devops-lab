@@ -5,16 +5,18 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- checkout: self
 
-- script: |
-    echo "Repository contents"
-    pwd
-    ls -la
-  displayName: "Show Files"
+- task: AzureCLI@2
+  displayName: "Test Azure Connection"
 
-- task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.SourcesDirectory)'
-    artifact: 'website'
-    publishLocation: 'pipeline'
+    azureSubscription: 'azure-lab-connection'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      echo "Connected to Azure"
+
+      az account show --output table
+
+      echo "Resource Groups:"
+      az group list --output table
