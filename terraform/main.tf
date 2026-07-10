@@ -119,3 +119,19 @@ resource "azurerm_network_security_rule" "app_8080" {
   resource_group_name         = azurerm_resource_group.lab.name
   network_security_group_name = azurerm_network_security_group.app.name
 }
+resource "azurerm_network_security_rule" "db_5432" {
+  name                        = "allow-app-to-db"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+
+  source_port_range           = "*"
+  destination_port_range      = "5432"
+
+  source_address_prefix       = "10.10.2.0/24"
+  destination_address_prefix  = "*"
+
+  resource_group_name         = azurerm_resource_group.lab.name
+  network_security_group_name = azurerm_network_security_group.db.name
+}
