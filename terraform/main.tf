@@ -12,20 +12,20 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "lab" {
-  name     = "rg-devops-lab-tf"
-  location = "swedencentral"
+  name     = var.resource_group_name
+  location = var.location
 }
 
 resource "azurerm_virtual_network" "lab" {
-  name                = "vnet-tf-lab"
-  address_space       = ["10.10.0.0/16"]
+  name                = var.vnet_name
+  address_space       = var.vnet_address_space
   location            = azurerm_resource_group.lab.location
   resource_group_name = azurerm_resource_group.lab.name
 }
 
 resource "azurerm_subnet" "web" {
-  name                 = "web-subnet"
+  name                 = var.subnet_name
   resource_group_name  = azurerm_resource_group.lab.name
   virtual_network_name = azurerm_virtual_network.lab.name
-  address_prefixes     = ["10.10.1.0/24"]
+  address_prefixes     = var.subnet_prefixes
 }
