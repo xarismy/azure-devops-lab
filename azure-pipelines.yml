@@ -6,17 +6,21 @@ pool:
 
 steps:
 
-- task: AzureCLI@2
-  displayName: "Test Azure Connection"
-
+- task: TerraformInstaller@1
   inputs:
-    azureSubscription: 'azure-lab-connection'
-    scriptType: bash
-    scriptLocation: inlineScript
-    inlineScript: |
-      echo "Connected to Azure"
+    terraformVersion: 'latest'
 
-      az account show --output table
+- script: |
+    cd terraform
+    terraform init
+  displayName: 'Terraform Init'
 
-      echo "Resource Groups:"
-      az group list --output table
+- script: |
+    cd terraform
+    terraform validate
+  displayName: 'Terraform Validate'
+
+- script: |
+    cd terraform
+    terraform plan
+  displayName: 'Terraform Plan'
