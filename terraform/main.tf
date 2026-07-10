@@ -29,3 +29,9 @@ resource "azurerm_subnet" "web" {
   virtual_network_name = azurerm_virtual_network.lab.name
   address_prefixes     = var.subnet_prefixes
 }
+resource "azurerm_subnet" "app" {
+  name                 = "app-subnet"
+  resource_group_name  = azurerm_resource_group.lab.name
+  virtual_network_name = azurerm_virtual_network.lab.name
+  address_prefixes     = ["10.10.2.0/24"]
+}
