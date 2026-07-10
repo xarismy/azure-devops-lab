@@ -37,5 +37,12 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       set -e
+      - task: AzureCLI@2
+  displayName: 'Terraform Init'
+  inputs:
+    azureSubscription: 'azure-lab-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
       cd terraform
-      terraform plan -no-color
+      terraform init
