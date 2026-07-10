@@ -17,11 +17,16 @@ steps:
     terraform version
   displayName: 'Install Terraform'
 
-- script: |
-    set -e
-    cd terraform
-    terraform init
+- task: AzureCLI@2
   displayName: 'Terraform Init'
+  inputs:
+    azureSubscription: 'azure-lab-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      set -e
+      cd terraform
+      terraform init
 
 - script: |
     set -e
@@ -37,12 +42,5 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       set -e
-      - task: AzureCLI@2
-  displayName: 'Terraform Init'
-  inputs:
-    azureSubscription: 'azure-lab-connection'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
       cd terraform
-      terraform init
+      terraform plan -no-color
