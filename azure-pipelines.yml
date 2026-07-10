@@ -5,6 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
 - script: |
     set -e
     sudo apt-get update
@@ -28,8 +29,13 @@ steps:
     terraform validate
   displayName: 'Terraform Validate'
 
-- script: |
-    set -e
-    cd terraform
-    terraform plan -no-color
+- task: AzureCLI@2
   displayName: 'Terraform Plan'
+  inputs:
+    azureSubscription: 'azure-lab-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      set -e
+      cd terraform
+      terraform plan -no-color
