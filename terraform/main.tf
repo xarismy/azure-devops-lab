@@ -136,14 +136,14 @@ resource "azurerm_network_security_rule" "db_5432" {
   network_security_group_name = azurerm_network_security_group.db.name
 }
 resource "azurerm_network_security_rule" "web_ssh" {
-  name                        = "allow-ssh"
-  priority                    = 120
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
+  name      = "allow-ssh"
+  priority  = 120
+  direction = "Inbound"
+  access    = "Allow"
+  protocol  = "Tcp"
 
-  source_port_range          = "*"
-  destination_port_range     = "22"
+  source_port_range      = "*"
+  destination_port_range = "22"
 
   source_address_prefix      = "*"
   destination_address_prefix = "*"
