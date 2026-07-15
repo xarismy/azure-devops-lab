@@ -72,65 +72,65 @@ resource "azurerm_subnet_network_security_group_association" "db" {
   network_security_group_id = azurerm_network_security_group.db.id
 }
 resource "azurerm_network_security_rule" "web_http" {
-  name                        = "allow-http"
-  priority                    = 100
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
+  name      = "allow-http"
+  priority  = 100
+  direction = "Inbound"
+  access    = "Allow"
+  protocol  = "Tcp"
 
-  source_port_range           = "*"
-  destination_port_range      = "80"
+  source_port_range      = "*"
+  destination_port_range = "80"
 
-  source_address_prefix       = "*"
-  destination_address_prefix  = "*"
+  source_address_prefix      = "*"
+  destination_address_prefix = "*"
 
   resource_group_name         = azurerm_resource_group.lab.name
   network_security_group_name = azurerm_network_security_group.web.name
 }
 resource "azurerm_network_security_rule" "web_https" {
-  name                        = "allow-https"
-  priority                    = 110
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
+  name      = "allow-https"
+  priority  = 110
+  direction = "Inbound"
+  access    = "Allow"
+  protocol  = "Tcp"
 
-  source_port_range           = "*"
-  destination_port_range      = "443"
+  source_port_range      = "*"
+  destination_port_range = "443"
 
-  source_address_prefix       = "*"
-  destination_address_prefix  = "*"
+  source_address_prefix      = "*"
+  destination_address_prefix = "*"
 
   resource_group_name         = azurerm_resource_group.lab.name
   network_security_group_name = azurerm_network_security_group.web.name
 }
 resource "azurerm_network_security_rule" "app_8080" {
-  name                        = "allow-web-to-app"
-  priority                    = 100
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
+  name      = "allow-web-to-app"
+  priority  = 100
+  direction = "Inbound"
+  access    = "Allow"
+  protocol  = "Tcp"
 
-  source_port_range           = "*"
-  destination_port_range      = "8080"
+  source_port_range      = "*"
+  destination_port_range = "8080"
 
-  source_address_prefix       = "10.10.1.0/24"
-  destination_address_prefix  = "*"
+  source_address_prefix      = "10.10.1.0/24"
+  destination_address_prefix = "*"
 
   resource_group_name         = azurerm_resource_group.lab.name
   network_security_group_name = azurerm_network_security_group.app.name
 }
 resource "azurerm_network_security_rule" "db_5432" {
-  name                        = "allow-app-to-db"
-  priority                    = 100
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
+  name      = "allow-app-to-db"
+  priority  = 100
+  direction = "Inbound"
+  access    = "Allow"
+  protocol  = "Tcp"
 
-  source_port_range           = "*"
-  destination_port_range      = "5432"
+  source_port_range      = "*"
+  destination_port_range = "5432"
 
-  source_address_prefix       = "10.10.2.0/24"
-  destination_address_prefix  = "*"
+  source_address_prefix      = "10.10.2.0/24"
+  destination_address_prefix = "*"
 
   resource_group_name         = azurerm_resource_group.lab.name
   network_security_group_name = azurerm_network_security_group.db.name

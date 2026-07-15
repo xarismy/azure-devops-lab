@@ -1,0 +1,121 @@
+{
+  "version": 4,
+  "terraform_version": "1.15.8",
+  "serial": 3,
+  "lineage": "ec334b4d-f8fa-e9f1-35a8-61f4a1bf1f23",
+  "outputs": {
+    "app_subnet_id": {
+      "value": null,
+      "type": "string"
+    },
+    "db_subnet_id": {
+      "value": null,
+      "type": "string"
+    },
+    "resource_group_name": {
+      "value": "rg-devops-lab-tf",
+      "type": "string"
+    },
+    "subnet_name": {
+      "value": null,
+      "type": "string"
+    },
+    "vnet_id": {
+      "value": "/subscriptions/5a40f5f0-71a6-40f9-8ee1-dcd23597f4b0/resourceGroups/rg-devops-lab-tf/providers/Microsoft.Network/virtualNetworks/vnet-tf-lab",
+      "type": "string"
+    },
+    "vnet_name": {
+      "value": "vnet-tf-lab",
+      "type": "string"
+    },
+    "web_subnet_id": {
+      "value": null,
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "lab",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/5a40f5f0-71a6-40f9-8ee1-dcd23597f4b0/resourceGroups/rg-devops-lab-tf",
+            "location": "swedencentral",
+            "managed_by": "",
+            "name": "rg-devops-lab-tf",
+            "tags": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "name": "rg-devops-lab-tf",
+            "subscription_id": "5a40f5f0-71a6-40f9-8ee1-dcd23597f4b0"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjo1NDAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIwIn0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_virtual_network",
+      "name": "lab",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "address_space": [
+              "10.10.0.0/16"
+            ],
+            "bgp_community": "",
+            "ddos_protection_plan": [],
+            "dns_servers": [],
+            "edge_zone": "",
+            "encryption": [],
+            "flow_timeout_in_minutes": 0,
+            "guid": "fa247dfb-bf34-4535-9828-06311d2d79fd",
+            "id": "/subscriptions/5a40f5f0-71a6-40f9-8ee1-dcd23597f4b0/resourceGroups/rg-devops-lab-tf/providers/Microsoft.Network/virtualNetworks/vnet-tf-lab",
+            "ip_address_pool": [],
+            "location": "swedencentral",
+            "name": "vnet-tf-lab",
+            "private_endpoint_vnet_policies": "Disabled",
+            "resource_group_name": "rg-devops-lab-tf",
+            "subnet": [
+              {
+                "address_prefixes": [
+                  "10.10.1.0/24"
+                ],
+                "default_outbound_access_enabled": true,
+                "delegation": [],
+                "id": "/subscriptions/5a40f5f0-71a6-40f9-8ee1-dcd23597f4b0/resourceGroups/rg-devops-lab-tf/providers/Microsoft.Network/virtualNetworks/vnet-tf-lab/subnets/web-subnet",
+                "name": "web-subnet",
+                "private_endpoint_network_policies": "Disabled",
+                "private_link_service_network_policies_enabled": true,
+                "route_table_id": "",
+                "security_group": "",
+                "service_endpoint_policy_ids": [],
+                "service_endpoints": []
+              }
+            ],
+            "tags": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "identity": {
+            "name": "vnet-tf-lab",
+            "resource_group_name": "rg-devops-lab-tf",
+            "subscription_id": "5a40f5f0-71a6-40f9-8ee1-dcd23597f4b0"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIwIn0="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
