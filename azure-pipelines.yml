@@ -43,4 +43,15 @@ steps:
     inlineScript: |
       set -e
       cd terraform
-      terraform plan -no-color
+      terraform plan -out=tfplan
+
+- task: AzureCLI@2
+  displayName: 'Terraform Apply'
+  inputs:
+    azureSubscription: 'azure-lab-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      set -e
+      cd terraform
+      terraform apply -auto-approve tfplan
