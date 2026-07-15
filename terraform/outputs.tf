@@ -24,3 +24,6 @@ output "app_subnet_id" {
 output "db_subnet_id" {
   value = azurerm_subnet.db.id
 }
+output "vm_public_ip" {
+  value = azurerm_public_ip.web.ip_address
+}
