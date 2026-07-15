@@ -27,6 +27,3 @@ output "db_subnet_id" {
 output "vm_public_ip" {
   value = azurerm_public_ip.web.ip_address
 }
-output "vm_public_ip" {
-  value = azurerm_public_ip.web.ip_address
-}
